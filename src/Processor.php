@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Eihen\JasperPHP;
 
@@ -159,7 +159,7 @@ class Processor extends JasperBase
         $returnCode = 0;
         $commandOutput = [];
 
-        chdir($this->jasperDir);
+        chdir($this->jasperBasePath);
         exec(
             "$this->executable $this->locale process \"$input\"  $this->output $args",
             $commandOutput,

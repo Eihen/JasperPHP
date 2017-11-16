@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Eihen\JasperPHP;
 
@@ -27,7 +27,7 @@ class Compiler extends JasperBase
         $returnCode = 0;
         $commandOutput = [];
 
-        chdir($this->jasperDir);
+        chdir($this->jasperBasePath);
         exec(
             "$this->executable $this->locale compile \"$input\" $this->output 2>&1",
             $commandOutput,

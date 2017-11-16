@@ -1,4 +1,10 @@
 # JasperPHP
+
+[![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/build-status/master)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
+[![GitHub license](https://img.shields.io/github/license/Eihen/JasperPHP.svg)](https://github.com/Eihen/JasperPHP/blob/master/LICENSE)
+
 A PHP library to compile and generate JasperReports using JasperStarter
 
 ### JasperStarter

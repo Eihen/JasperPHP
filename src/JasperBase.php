@@ -14,15 +14,16 @@ namespace Eihen\JasperPHP;
 abstract class JasperBase
 {
     const JASPER_DIR = __DIR__ . '/../vendor/bin/';
+    const JASPER_NAME = 'jasperstarter';
 
     /** @var string JasperStarter dir realpath */
-    protected $jasperDir;
+    protected $jasperBasePath;
 
     /** @var bool Is running on windows? */
     protected $isWindows;
 
     /** @var string JasperStarter executable file name */
-    protected $executable = 'jasperstarter';
+    protected $executable;
 
     /** @var string Output path */
     protected $output = '';
@@ -39,14 +40,16 @@ abstract class JasperBase
      */
     public function __construct()
     {
-        $this->jasperDir = realpath(self::JASPER_DIR) . '/';
+        $this->jasperBasePath = realpath(self::JASPER_DIR) . '/';
+        $this->executable = $this->jasperBasePath . self::JASPER_NAME;
 
         if ($this->isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             $this->executable .= '.exe.bat';
         }
 
-        if (!file_exists($this->jasperDir . $this->executable)) {
-            throw new \Exception('JasperStarter executable file not found in path: ' . $this->jasperDir . $this->executable);
+        if (!file_exists($this->executable)) {
+            throw new \Exception('JasperStarter executable file not found in path: ' .
+                $this->jasperBasePath . $this->executable);
         }
     }
 
@@ -59,28 +62,20 @@ abstract class JasperBase
      */
     public function output(string $output)
     {
-        if (!empty($output))
-        {
+        if (!empty($output)) {
             $info = pathinfo($output);
             // Checks if the full output is a valid directory
-            if (($dir = realpath($output)) && is_dir($dir))
-            {
+            if (($dir = realpath($output)) && is_dir($dir)) {
                 $output = "-o \"$dir\"";
-            }
-
-            // Checks if the dirname of the output is a valid directory
-            else if (($dir = realpath($info['dirname'])) && is_dir($dir))
-            {
+            } // Checks if the dirname of the output is a valid directory
+            elseif (($dir = realpath($info['dirname'])) && is_dir($dir)) {
                 $output = '-o ' . $dir . '/' . $info['filename'];
 
                 // To avoid .jasper.jasper since JasperStarter always adds the extension
-                if (isset($info['extension']) && $info['extension'] != 'jasper')
-                {
+                if (isset($info['extension']) && $info['extension'] != 'jasper') {
                     $output .= $info['extension'];
                 }
-            }
-            else
-            {
+            } else {
                 throw new \InvalidArgumentException('The directory of the output is invalid.');
             }
         }
