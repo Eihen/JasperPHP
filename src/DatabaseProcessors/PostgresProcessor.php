@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace Eihen\JasperPHP;
+
+/**
+ * PostgreSQL Processor
+ *
+ * Process reports with PostgreSQL database as Data Source
+ *
+ * @package Eihen\JasperPHP
+ */
+class PostgresProcessor extends DatabaseProcessor
+{
+    /**
+     * PostgresProcessor constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->args['type'] = '-t postgres';
+    }
+}
