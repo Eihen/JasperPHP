@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "eihen/jasperstarter-bin",
-            "version": "v3.2.1",
+            "version": "v3.2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eihen/JasperStarter-bin.git",
-                "reference": "0f826a96177526edbca67fa570b92bb6cb11333a"
+                "reference": "907e00bfd4fdeda0e5332821da1a701b2d4347aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eihen/JasperStarter-bin/zipball/0f826a96177526edbca67fa570b92bb6cb11333a",
-                "reference": "0f826a96177526edbca67fa570b92bb6cb11333a",
+                "url": "https://api.github.com/repos/Eihen/JasperStarter-bin/zipball/907e00bfd4fdeda0e5332821da1a701b2d4347aa",
+                "reference": "907e00bfd4fdeda0e5332821da1a701b2d4347aa",
                 "shasum": ""
             },
             "bin": [
@@ -60,7 +60,7 @@
                 "jasperstarter",
                 "reports"
             ],
-            "time": "2017-11-16T11:46:30+00:00"
+            "time": "2017-11-16T18:42:28+00:00"
         }
     ],
     "packages-dev": [

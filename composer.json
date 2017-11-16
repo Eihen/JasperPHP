@@ -26,7 +26,7 @@
     ],
     "require": {
         "php" : "^7.0",
-        "eihen/jasperstarter-bin": "^1.0.0"
+        "eihen/jasperstarter-bin": "^3.2.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4",
