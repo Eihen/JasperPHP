@@ -92,10 +92,7 @@ class CsvProcessor extends FileProcessor
      */
     public function recordDelimiter(string $delimiter)
     {
-        if (!empty($delimiter)) {
-            $this->args['csvRecordDelimiter']
-                = "--csv-record-del \"$delimiter\"";
-        }
+        $this->args['csvRecordDelimiter'] = !empty($delimiter) ? "--csv-record-del \"$delimiter\"" : '';
 
         return $this;
     }
