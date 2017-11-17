@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cd6251773c63357fed423d3ea41e367",
+    "content-hash": "9a34a9a5e7907ff2514511c382cdbf9c",
     "packages": [
         {
             "name": "eihen/jasperstarter-bin",
