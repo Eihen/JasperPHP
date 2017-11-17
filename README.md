@@ -1,8 +1,8 @@
-# JasperPHP
+# JasperPHP (PHP 5.6+)
 
-[![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/build-status/master)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
-[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
+[![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/Eihen/JasperPHP/php5.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/build-status/php5)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/Eihen/JasperPHP/php5.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=php5)
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/Eihen/JasperPHP/php5.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=php5)
 [![GitHub license](https://img.shields.io/github/license/Eihen/JasperPHP.svg)](https://github.com/Eihen/JasperPHP/blob/master/LICENSE)
 
 A PHP library to compile and generate JasperReports using JasperStarter
