@@ -1,25 +1,25 @@
 checks:
-  php: true
+    php: true
 
 filter:
-  paths:
-    - "src/*"
-  dependency_paths:
-    - "vendor/*"
-  excluded_paths:
-    - "vendor/*"
+    paths:
+        - "src/*"
+    dependency_paths:
+        - "vendor/*"
+    excluded_paths:
+        - "vendor/*"
 
 tools:
-  php_analyzer: true
-  php_changetracking: true
-  php_code_sniffer:
-    enabled: true
-    config:
-      standard: PSR2
-  php_cpd: true
-  php_mess_detector: true
-  php_pdepend: true
-  php_sim: true
+    php_analyzer: true
+    php_changetracking: true
+    php_code_sniffer:
+        enabled: true
+        config:
+            standard: PSR2
+    php_cpd: true
+    php_mess_detector: true
+    php_pdepend: true
+    php_sim: true
 
 build:
     tests:

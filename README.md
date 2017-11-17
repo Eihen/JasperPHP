@@ -1,4 +1,4 @@
-# JasperPHP
+# JasperPHP (PHP 7.0+)
 
 [![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/build-status/master)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
@@ -6,6 +6,9 @@
 [![GitHub license](https://img.shields.io/github/license/Eihen/JasperPHP.svg)](https://github.com/Eihen/JasperPHP/blob/master/LICENSE)
 
 A PHP library to compile and generate JasperReports using JasperStarter
+
+#### PHP 5
+For PHP 5.6+ support see [php5-dev](https://github.com/Eihen/JasperPHP/tree/php5) branch.
 
 ### JasperStarter
 For detailed information on the JasperStarter used in this package refer to refer to: [JasperStarter Binary Package](https://github.com/Eihen/JasperStarter-bin).
