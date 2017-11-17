@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -29,7 +27,7 @@ class OracleProcessor extends DatabaseProcessor
      *
      * @return $this
      */
-    public function sid(string $sid)
+    public function sid($sid)
     {
         $this->args['oracleSid'] = !empty($sid) ? "--db-sid \"$sid\"" : '';
 

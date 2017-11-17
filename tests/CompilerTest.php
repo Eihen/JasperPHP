@@ -47,7 +47,7 @@ class CompilerTest extends TestCase
      * @param string $output
      * @param Compiler $compiler
      */
-    public function testCompile(string $input, string $output, Compiler $compiler)
+    public function testCompile($input, $output, Compiler $compiler)
     {
         $compiler->output($output)->compile($input);
 

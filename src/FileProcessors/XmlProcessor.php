@@ -29,7 +29,7 @@ class XmlProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function xpath(string $xpath)
+    public function xpath($xpath)
     {
         $this->args['xpath'] = !empty($xpath) ? "--xml-xpath $xpath" : '';
 

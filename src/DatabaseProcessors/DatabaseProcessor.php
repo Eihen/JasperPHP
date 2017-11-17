@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -28,7 +26,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function host(string $host)
+    public function host($host)
     {
         $this->args['dbHost'] = !empty($host) ? "-H \"$host\"" : '';
 
@@ -42,7 +40,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function port(string $port)
+    public function port($port)
     {
         $this->args['dbPort'] = !empty($port) ? "--db-port \"$port\"" : '';
 
@@ -56,7 +54,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function database(string $name)
+    public function database($name)
     {
         $this->args['dbName'] = !empty($name) ? "-n \"$name\"" : '';
 
@@ -70,7 +68,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function user(string $user)
+    public function user($user)
     {
         $this->args['dbUser'] = !empty($user) ? "-u \"$user\"" : '';
 
@@ -84,7 +82,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function password(string $password)
+    public function password($password)
     {
         $this->args['dbPassword'] = !empty($password) ? "-p \"$password\"" : '';
 

@@ -60,7 +60,7 @@ abstract class JasperBase
      * @param string $output
      * @return $this
      */
-    public function output(string $output)
+    public function output($output)
     {
         if (!empty($output)) {
             $info = pathinfo($output);
@@ -92,7 +92,7 @@ abstract class JasperBase
      *
      * @return $this
      */
-    public function locale(string $locale)
+    public function locale($locale)
     {
         $this->locale = !empty($locale) ? "--locale \"$locale\"" : '';
 
@@ -107,7 +107,7 @@ abstract class JasperBase
      *
      * @return string
      */
-    protected static function validateInput(string $input, array $acceptedFormats)
+    protected static function validateInput($input, array $acceptedFormats)
     {
         if (empty($input)) {
             throw new \InvalidArgumentException('Input file not defined.');

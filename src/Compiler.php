@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -20,7 +18,7 @@ class Compiler extends JasperBase
      *
      * @throws \Exception
      */
-    public function compile(string $input)
+    public function compile($input)
     {
         $input = static::validateInput($input, ['jrxml']);
 

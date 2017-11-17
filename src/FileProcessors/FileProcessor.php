@@ -28,7 +28,7 @@ abstract class FileProcessor extends Processor
      *
      * @return $this
      */
-    public function file(string $file)
+    public function file($file)
     {
         $this->args['file'] = !empty($file) ? "--data-file \"$file\"" : '';
 

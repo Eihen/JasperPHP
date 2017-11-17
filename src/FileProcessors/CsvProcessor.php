@@ -45,7 +45,7 @@ class CsvProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function column(string $column)
+    public function column($column)
     {
         if (!empty($column)) {
             $this->columns[] = $column;
@@ -75,7 +75,7 @@ class CsvProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function fieldDelimiter(string $delimiter)
+    public function fieldDelimiter($delimiter)
     {
         $this->args['csvFieldDelimiter'] = !empty($delimiter) ? "--csv-field-del \"$delimiter\"" : '';
 
@@ -90,7 +90,7 @@ class CsvProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function recordDelimiter(string $delimiter)
+    public function recordDelimiter($delimiter)
     {
         $this->args['csvRecordDelimiter'] = !empty($delimiter) ? "--csv-record-del \"$delimiter\"" : '';
 
@@ -105,7 +105,7 @@ class CsvProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function charset(string $charset)
+    public function charset($charset)
     {
         $this->args['csvCharset'] = !empty($charset) ? "--csv-charset \"$charset\"" : '';
 
@@ -123,7 +123,7 @@ class CsvProcessor extends FileProcessor
      *
      * @throws \Exception
      */
-    public function process(string $input, array $formats)
+    public function process($input, array $formats)
     {
         if (count($this->columns) > 0) {
             $this->args['csvColumns'] = '--csv-columns '

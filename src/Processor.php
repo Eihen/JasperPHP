@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -64,7 +62,7 @@ class Processor extends JasperBase
      *
      * @return $this
      */
-    public function param(string $key, string $value)
+    public function param($key, $value)
     {
         $this->params[$key] = !empty($key) ? "$value" : '';
 
@@ -93,7 +91,7 @@ class Processor extends JasperBase
      *
      * @return $this
      */
-    public function resource(string $path)
+    public function resource($path)
     {
         $this->args['resource'] = !empty($path) ? "-r $path" : '';
 
@@ -108,7 +106,7 @@ class Processor extends JasperBase
      *
      * @return $this
      */
-    public function outDelimiter(string $delimiter)
+    public function outDelimiter($delimiter)
     {
         $this->args['delimiter'] = !empty($delimiter) ? "--out-field-del $delimiter" : '';
 
@@ -123,7 +121,7 @@ class Processor extends JasperBase
      *
      * @return $this
      */
-    public function charset(string $charset)
+    public function charset($charset)
     {
         $this->args['charset'] = !empty($charset) ? "--out-charset $charset" : '';
 
@@ -141,7 +139,7 @@ class Processor extends JasperBase
      *
      * @throws \Exception
      */
-    public function process(string $input, array $formats)
+    public function process($input, array $formats)
     {
         $input = static::validateInput($input);
 
@@ -179,7 +177,7 @@ class Processor extends JasperBase
      *
      * @return string
      */
-    protected static function validateInput(string $input, array $acceptedFormats = self::VALID_INPUTS)
+    protected static function validateInput($input, array $acceptedFormats = self::VALID_INPUTS)
     {
         return parent::validateInput($input, $acceptedFormats);
     }

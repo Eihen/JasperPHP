@@ -29,7 +29,7 @@ class JsonProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function query(string $query)
+    public function query($query)
     {
         $this->args['jsonQuery'] = !empty($query) ? "--json-query \"$query\"" : '';
 

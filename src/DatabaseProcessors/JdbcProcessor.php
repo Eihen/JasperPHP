@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -29,7 +27,7 @@ class JdbcProcessor extends DatabaseProcessor
      *
      * @return $this
      */
-    public function class(string $driver)
+    public function class($driver)
     {
         $this->args['jdbcDriver'] = !empty($driver) ? "--db-driver \"$driver\"" : '';
 
@@ -43,7 +41,7 @@ class JdbcProcessor extends DatabaseProcessor
      *
      * @return $this
      */
-    public function url(string $url)
+    public function url($url)
     {
         $this->args['jdbcUrl'] = !empty($url) ? "--db-url \"$url\"" : '';
 
@@ -58,7 +56,7 @@ class JdbcProcessor extends DatabaseProcessor
      *
      * @return $this
      */
-    public function dir(string $dir)
+    public function dir($dir)
     {
         $this->args['jdbcDir'] = !empty($dir) ? "--jdbc-dir \"$dir\"" : '';
 
