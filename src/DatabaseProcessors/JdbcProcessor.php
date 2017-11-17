@@ -16,7 +16,6 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function __construct()
     {
-        parent::__construct();
         $this->args['type'] = '-t generic';
     }
 

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace Eihen\JasperPHP;
 
 /**
@@ -18,7 +16,6 @@ class XmlProcessor extends FileProcessor
      */
     public function __construct()
     {
-        parent::__construct();
         $this->args['type'] = '-t xml';
     }
 
