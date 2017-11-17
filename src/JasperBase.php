@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Eihen\JasperPHP;
 
@@ -13,45 +13,11 @@ namespace Eihen\JasperPHP;
  */
 abstract class JasperBase
 {
-    const JASPER_DIR = __DIR__ . '/../vendor/bin/';
-    const JASPER_NAME = 'jasperstarter';
-
-    /** @var string JasperStarter dir realpath */
-    protected $jasperBasePath;
-
-    /** @var bool Is running on windows? */
-    protected $isWindows;
-
-    /** @var string JasperStarter executable file name */
-    protected $executable;
-
     /** @var string Output path */
     protected $output = '';
 
     /** @var string Locale code */
     protected $locale = '';
-
-    /**
-     * JasperBase constructor.
-     *
-     * Checks running OS and existence of JasperStarter
-     *
-     * @throws \Exception
-     */
-    public function __construct()
-    {
-        $this->jasperBasePath = realpath(self::JASPER_DIR) . '/';
-        $this->executable = $this->jasperBasePath . self::JASPER_NAME;
-
-        if ($this->isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $this->executable .= '.exe.bat';
-        }
-
-        if (!file_exists($this->executable)) {
-            throw new \Exception('JasperStarter executable file not found in path: ' .
-                $this->jasperBasePath . $this->executable);
-        }
-    }
 
     /**
      * Set the output directory and file name prefix

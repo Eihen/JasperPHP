@@ -18,7 +18,6 @@ class XmlProcessor extends FileProcessor
      */
     public function __construct()
     {
-        parent::__construct();
         $this->args['type'] = '-t xml';
     }
 

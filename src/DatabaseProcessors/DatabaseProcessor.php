@@ -14,14 +14,6 @@ namespace Eihen\JasperPHP;
 abstract class DatabaseProcessor extends Processor
 {
     /**
-     * DatabaseProcessor constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Set the Database Host
      *
      * @param string $host Host name

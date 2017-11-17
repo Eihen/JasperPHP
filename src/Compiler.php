@@ -27,9 +27,8 @@ class Compiler extends JasperBase
         $returnCode = 0;
         $commandOutput = [];
 
-        chdir($this->jasperBasePath);
         exec(
-            "$this->executable $this->locale compile \"$input\" $this->output 2>&1",
+            constant('JASPERSTARTER_BIN') . " $this->locale compile \"$input\" $this->output 2>&1",
             $commandOutput,
             $returnCode
         );

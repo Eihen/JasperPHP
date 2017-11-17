@@ -39,11 +39,6 @@ class Processor extends JasperBase
     protected $args = [];
     protected $params = [];
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Compile the input .jrxml file to .jasper before processing the report
      * Saves the .jasper file in the same directory as the input file
@@ -159,9 +154,8 @@ class Processor extends JasperBase
         $returnCode = 0;
         $commandOutput = [];
 
-        chdir($this->jasperBasePath);
         exec(
-            "$this->executable $this->locale process \"$input\"  $this->output $args",
+            constant('JASPERSTARTER_BIN') . " $this->locale process \"$input\"  $this->output $args",
             $commandOutput,
             $returnCode
         );

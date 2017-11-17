@@ -23,7 +23,6 @@ class CsvProcessor extends FileProcessor
      */
     final public function __construct()
     {
-        parent::__construct();
         $this->args['type'] = '-t csv';
     }
 

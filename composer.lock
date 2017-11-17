@@ -8,23 +8,31 @@
     "packages": [
         {
             "name": "eihen/jasperstarter-bin",
-            "version": "v3.2.1.1",
+            "version": "v3.2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eihen/JasperStarter-bin.git",
-                "reference": "907e00bfd4fdeda0e5332821da1a701b2d4347aa"
+                "reference": "21e258d45d207b5c484628a6f9313f4ae287f700"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eihen/JasperStarter-bin/zipball/907e00bfd4fdeda0e5332821da1a701b2d4347aa",
-                "reference": "907e00bfd4fdeda0e5332821da1a701b2d4347aa",
+                "url": "https://api.github.com/repos/Eihen/JasperStarter-bin/zipball/21e258d45d207b5c484628a6f9313f4ae287f700",
+                "reference": "21e258d45d207b5c484628a6f9313f4ae287f700",
                 "shasum": ""
+            },
+            "require": {
+                "php": "^5.6|^7.0"
             },
             "bin": [
                 "bin/jasperstarter",
                 "bin/jasperstarter.exe"
             ],
             "type": "library",
+            "autoload": {
+                "files": [
+                    "phpSrc/JasperStarter.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
@@ -60,7 +68,7 @@
                 "jasperstarter",
                 "reports"
             ],
-            "time": "2017-11-16T18:42:28+00:00"
+            "time": "2017-11-17T18:13:52+00:00"
         }
     ],
     "packages-dev": [
