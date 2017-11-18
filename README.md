@@ -8,7 +8,7 @@
 A PHP library to compile and generate JasperReports using JasperStarter
 
 #### PHP 5
-For PHP 5.6+ support see [php5-dev](https://github.com/Eihen/JasperPHP/tree/php5) branch.
+For PHP 5.6+ support see [php5](https://github.com/Eihen/JasperPHP/tree/php5) branch.
 
 ### JasperStarter
 For detailed information on the JasperStarter used in this package refer to refer to: [JasperStarter Binary Package](https://github.com/Eihen/JasperStarter-bin).
