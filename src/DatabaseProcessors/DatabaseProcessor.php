@@ -89,7 +89,7 @@ abstract class DatabaseProcessor extends Processor
      *
      * @return $this
      */
-    public function dbArgs(array $dbArgs)
+    public function dbArgs($dbArgs)
     {
         if (isset($dbArgs['host'])) {
             $this->host($dbArgs['host']);

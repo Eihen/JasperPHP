@@ -58,7 +58,7 @@ class CsvProcessor extends FileProcessor
      *
      * @return $this
      */
-    public function columns(array $columns)
+    public function columns($columns)
     {
         $this->columns = array_merge($this->columns, $columns);
         return $this;
@@ -120,7 +120,7 @@ class CsvProcessor extends FileProcessor
      *
      * @throws \Exception
      */
-    public function process($input, array $formats)
+    public function process($input, $formats)
     {
         if (count($this->columns) > 0) {
             $this->args['csvColumns'] = '--csv-columns '

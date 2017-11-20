@@ -71,7 +71,7 @@ class Processor extends JasperBase
      *
      * @return $this
      */
-    public function params(array $params)
+    public function params($params)
     {
         $this->params = array_merge($this->params, $params);
 
@@ -134,7 +134,7 @@ class Processor extends JasperBase
      *
      * @throws \Exception
      */
-    public function process($input, array $formats)
+    public function process($input, $formats)
     {
         $input = static::validateInput($input);
 
@@ -171,7 +171,7 @@ class Processor extends JasperBase
      *
      * @return string
      */
-    protected static function validateInput($input, array $acceptedFormats = self::VALID_INPUTS)
+    protected static function validateInput($input, $acceptedFormats = self::VALID_INPUTS)
     {
         return parent::validateInput($input, $acceptedFormats);
     }

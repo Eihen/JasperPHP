@@ -71,7 +71,7 @@ abstract class JasperBase
      *
      * @return string
      */
-    protected static function validateInput($input, array $acceptedFormats)
+    protected static function validateInput($input, $acceptedFormats)
     {
         if (empty($input)) {
             throw new \InvalidArgumentException('Input file not defined.');
