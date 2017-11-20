@@ -155,7 +155,7 @@ class Processor extends JasperBase
         $commandOutput = [];
 
         exec(
-            constant('JASPERSTARTER_BIN') . " $this->locale process \"$input\"  $this->output $args",
+            constant('JASPERSTARTER_BIN') . " $this->locale process \"$input\"  $this->output $args 2>&1",
             $commandOutput,
             $returnCode
         );
