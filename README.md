@@ -1,5 +1,6 @@
 # JasperPHP (PHP 7.0+)
 
+[![Packagist](https://img.shields.io/packagist/v/eihen/jasper-php.svg)](https://packagist.org/packages/eihen/jasper-php)
 [![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/build-status/master)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/Eihen/JasperPHP.svg)](https://scrutinizer-ci.com/g/Eihen/JasperPHP/?branch=master)
