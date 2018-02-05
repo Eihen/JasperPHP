@@ -90,7 +90,7 @@ class Processor extends JasperBase
      */
     public function resource(string $path)
     {
-        $this->args['resource'] = !empty($path) ? "-r $path" : '';
+        $this->args['resource'] = $path !== null ? "-r $path" : '';
 
         return $this;
     }
