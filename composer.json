@@ -15,7 +15,7 @@
         "jaspersoft"
     ],
     "homepage": "https://github.com/Eihen/JasperPHP",
-    "license": "LGPL-3.0",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Emerson Belancieri",
