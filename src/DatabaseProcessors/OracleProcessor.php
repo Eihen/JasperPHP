@@ -16,7 +16,7 @@ class OracleProcessor extends DatabaseProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t oracle';
+        $this->args['type'] = '-t "oracle"';
     }
 
     /**
@@ -28,7 +28,7 @@ class OracleProcessor extends DatabaseProcessor
      */
     public function sid($sid)
     {
-        $this->args['oracleSid'] = !empty($sid) ? "--db-sid \"$sid\"" : '';
+        $this->args['oracleSid'] = !empty($sid) ? '--db-sid ' . escapeshellarg($sid) : '';
 
         return $this;
     }

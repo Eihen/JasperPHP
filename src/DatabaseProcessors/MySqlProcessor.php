@@ -16,6 +16,6 @@ class MySqlProcessor extends DatabaseProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t mysql';
+        $this->args['type'] = '-t "mysql"';
     }
 }

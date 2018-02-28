@@ -21,7 +21,7 @@ class CsvProcessor extends FileProcessor
      */
     final public function __construct()
     {
-        $this->args['type'] = '-t csv';
+        $this->args['type'] = '-t "csv"';
     }
 
     /**
@@ -74,7 +74,7 @@ class CsvProcessor extends FileProcessor
      */
     public function fieldDelimiter($delimiter)
     {
-        $this->args['csvFieldDelimiter'] = !empty($delimiter) ? "--csv-field-del \"$delimiter\"" : '';
+        $this->args['csvFieldDelimiter'] = !empty($delimiter) ? '--csv-field-del ' . escapeshellarg($delimiter) : '';
 
         return $this;
     }
@@ -89,7 +89,7 @@ class CsvProcessor extends FileProcessor
      */
     public function recordDelimiter($delimiter)
     {
-        $this->args['csvRecordDelimiter'] = !empty($delimiter) ? "--csv-record-del \"$delimiter\"" : '';
+        $this->args['csvRecordDelimiter'] = !empty($delimiter) ? '--csv-record-del ' . escapeshellarg($delimiter) : '';
 
         return $this;
     }
@@ -104,7 +104,7 @@ class CsvProcessor extends FileProcessor
      */
     public function charset($charset)
     {
-        $this->args['csvCharset'] = !empty($charset) ? "--csv-charset \"$charset\"" : '';
+        $this->args['csvCharset'] = !empty($charset) ? '--csv-charset ' . escapeshellarg($charset) : '';
 
         return $this;
     }
@@ -124,7 +124,7 @@ class CsvProcessor extends FileProcessor
     {
         if (count($this->columns) > 0) {
             $this->args['csvColumns'] = '--csv-columns '
-                . implode(' ', $this->columns);
+                . escapeshellarg(implode(' ', $this->columns));
         }
 
         parent::process($input, $formats);

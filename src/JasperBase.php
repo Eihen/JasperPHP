@@ -30,10 +30,10 @@ abstract class JasperBase
             $info = pathinfo($output);
             // Checks if the full output is a valid directory
             if (($dir = realpath($output)) && is_dir($dir)) {
-                $output = "-o \"$dir\"";
+                $output = $dir;
             } // Checks if the dirname of the output is a valid directory
             elseif (($dir = realpath($info['dirname'])) && is_dir($dir)) {
-                $output = '-o ' . $dir . '/' . $info['filename'];
+                $output = $dir . '/' . $info['filename'];
 
                 // To avoid .jasper.jasper since JasperStarter always adds the extension
                 if (isset($info['extension']) && $info['extension'] != 'jasper') {
@@ -44,7 +44,7 @@ abstract class JasperBase
             }
         }
 
-        $this->output = $output;
+        $this->output = '-o ' . escapeshellarg($output);
         return $this;
     }
 
@@ -58,7 +58,7 @@ abstract class JasperBase
      */
     public function locale($locale)
     {
-        $this->locale = !empty($locale) ? "--locale \"$locale\"" : '';
+        $this->locale = !empty($locale) ? '--locale ' . escapeshellarg($locale) : '';
 
         return $this;
     }
@@ -85,6 +85,6 @@ abstract class JasperBase
             throw new \InvalidArgumentException('Invalid input file format.');
         }
 
-        return realpath($input);
+        return escapeshellarg(realpath($input));
     }
 }
