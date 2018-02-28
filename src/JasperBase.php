@@ -3,11 +3,9 @@
 namespace Eihen\JasperPHP;
 
 /**
- * JasperBase
+ * JasperBase.
  *
  * Basic interface with the JasperStarter cli tool
- *
- * @package Eihen\JasperPHP
  */
 abstract class JasperBase
 {
@@ -19,9 +17,10 @@ abstract class JasperBase
 
     /**
      * Set the output directory and file name prefix
-     * Format: path/to/output/prefix
+     * Format: path/to/output/prefix.
      *
      * @param string $output
+     *
      * @return $this
      */
     public function output($output)
@@ -33,7 +32,7 @@ abstract class JasperBase
                 $output = $dir;
             } // Checks if the dirname of the output is a valid directory
             elseif (($dir = realpath($info['dirname'])) && is_dir($dir)) {
-                $output = $dir . '/' . $info['filename'];
+                $output = $dir.'/'.$info['filename'];
 
                 // To avoid .jasper.jasper since JasperStarter always adds the extension
                 if (isset($info['extension']) && $info['extension'] != 'jasper') {
@@ -44,13 +43,14 @@ abstract class JasperBase
             }
         }
 
-        $this->output = '-o ' . escapeshellarg($output);
+        $this->output = '-o '.escapeshellarg($output);
+
         return $this;
     }
 
     /**
      * Set the locale used to process the report
-     * Use ISO-639 two letter code (en) or a combination of ISO-639 and ISO_3166 codes (en_US)
+     * Use ISO-639 two letter code (en) or a combination of ISO-639 and ISO_3166 codes (en_US).
      *
      * @param string $locale Locale code
      *
@@ -58,16 +58,16 @@ abstract class JasperBase
      */
     public function locale($locale)
     {
-        $this->locale = !empty($locale) ? '--locale ' . escapeshellarg($locale) : '';
+        $this->locale = !empty($locale) ? '--locale '.escapeshellarg($locale) : '';
 
         return $this;
     }
 
     /**
-     * Validates input file and returns it's real path
+     * Validates input file and returns it's real path.
      *
-     * @param string $input Path to the input file
-     * @param array $acceptedFormats Accepted formats
+     * @param string $input           Path to the input file
+     * @param array  $acceptedFormats Accepted formats
      *
      * @return string
      */

@@ -3,11 +3,9 @@
 namespace Eihen\JasperPHP;
 
 /**
- * JSON Processor
+ * JSON Processor.
  *
  * Process reports with JSON file as Data Source
- *
- * @package Eihen\JasperPHP
  */
 class JsonProcessor extends FileProcessor
 {
@@ -20,7 +18,7 @@ class JsonProcessor extends FileProcessor
     }
 
     /**
-     * Set the JSON query string
+     * Set the JSON query string.
      *
      * @param string $query Query
      *
@@ -28,7 +26,7 @@ class JsonProcessor extends FileProcessor
      */
     public function query($query)
     {
-        $this->args['jsonQuery'] = !empty($query) ? '--json-query ' . escapeshellarg($query) : '';
+        $this->args['jsonQuery'] = !empty($query) ? '--json-query '.escapeshellarg($query) : '';
 
         return $this;
     }

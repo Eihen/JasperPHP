@@ -3,11 +3,9 @@
 namespace Eihen\JasperPHP;
 
 /**
- * JDBC Processor
+ * JDBC Processor.
  *
  * Process reports with any database as Data Source, for which a JDBC driver can be provided
- *
- * @package Eihen\JasperPHP
  */
 class JdbcProcessor extends DatabaseProcessor
 {
@@ -20,7 +18,7 @@ class JdbcProcessor extends DatabaseProcessor
     }
 
     /**
-     * Set the JDBC Driver
+     * Set the JDBC Driver.
      *
      * @param string $driver Driver Class Name
      *
@@ -28,13 +26,13 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function class($driver)
     {
-        $this->args['jdbcDriver'] = !empty($driver) ? '--db-driver ' . escapeshellarg($driver) : '';
+        $this->args['jdbcDriver'] = !empty($driver) ? '--db-driver '.escapeshellarg($driver) : '';
 
         return $this;
     }
 
     /**
-     * Set the JDBC Url (without user and password)
+     * Set the JDBC Url (without user and password).
      *
      * @param string $url JDBC Url
      *
@@ -42,14 +40,14 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function url($url)
     {
-        $this->args['jdbcUrl'] = !empty($url) ? '--db-url ' . escapeshellarg($url) : '';
+        $this->args['jdbcUrl'] = !empty($url) ? '--db-url '.escapeshellarg($url) : '';
 
         return $this;
     }
 
     /**
      * Set the directory where the JDBC Drivers .jar files are located
-     * Default to "./jdbc"
+     * Default to "./jdbc".
      *
      * @param string $dir Path to JDBC Drivers directory
      *
@@ -57,7 +55,7 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function dir($dir)
     {
-        $this->args['jdbcDir'] = !empty($dir) ? '--jdbc-dir ' . escapeshellarg($dir) : '';
+        $this->args['jdbcDir'] = !empty($dir) ? '--jdbc-dir '.escapeshellarg($dir) : '';
 
         return $this;
     }

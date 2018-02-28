@@ -3,11 +3,9 @@
 namespace Eihen\JasperPHP;
 
 /**
- * PostgreSQL Processor
+ * PostgreSQL Processor.
  *
  * Process reports with PostgreSQL database as Data Source
- *
- * @package Eihen\JasperPHP
  */
 class PostgresProcessor extends DatabaseProcessor
 {
