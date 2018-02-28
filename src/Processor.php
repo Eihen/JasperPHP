@@ -61,8 +61,7 @@ class Processor extends JasperBase
      */
     public function param(string $key, $value)
     {
-        if (!empty($key))
-        {
+        if (!empty($key)) {
             $this->params[$key] = $value;
         }
 
@@ -78,8 +77,7 @@ class Processor extends JasperBase
      */
     public function params(array $params)
     {
-        foreach ($params as $key => $value)
-        {
+        foreach ($params as $key => $value) {
             $this->param($key, $value);
         }
 
@@ -96,7 +94,16 @@ class Processor extends JasperBase
         if (count($this->params) > 0) {
             $args = ' -P';
             foreach ($this->params as $key => $value) {
-                $args .= ' ' . escapeshellarg($key) . '=' . (is_string($value) ? escapeshellarg($value) : $value);
+                $args .= ' ' . escapeshellarg($key) . '=';
+                if (is_null($value)) {
+                    $args .= 'null';
+                } else {
+                    if (is_string($value)) {
+                        $args .= escapeshellarg($value);
+                    } else {
+                        $args .= $value;
+                    }
+                }
             }
 
             return $args;
@@ -183,8 +190,7 @@ class Processor extends JasperBase
 
         $command = constant('JASPERSTARTER_BIN') . " $this->locale process $input $this->output $args 2>&1";
 
-        if ($dontExec)
-        {
+        if ($dontExec) {
             return $command;
         }
 
