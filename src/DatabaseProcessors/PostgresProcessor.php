@@ -18,6 +18,6 @@ class PostgresProcessor extends DatabaseProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t postgres';
+        $this->args['type'] = '-t "postgres"';
     }
 }

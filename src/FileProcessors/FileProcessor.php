@@ -22,7 +22,7 @@ abstract class FileProcessor extends Processor
      */
     public function file(string $file)
     {
-        $this->args['file'] = !empty($file) ? "--data-file \"$file\"" : '';
+        $this->args['file'] = !empty($file) ? '--data-file ' . escapeshellarg($file) : '';
 
         return $this;
     }

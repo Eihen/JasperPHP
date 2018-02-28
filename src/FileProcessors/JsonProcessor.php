@@ -18,7 +18,7 @@ class JsonProcessor extends FileProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t json';
+        $this->args['type'] = '-t "json"';
     }
 
     /**
@@ -30,7 +30,7 @@ class JsonProcessor extends FileProcessor
      */
     public function query(string $query)
     {
-        $this->args['jsonQuery'] = !empty($query) ? "--json-query \"$query\"" : '';
+        $this->args['jsonQuery'] = !empty($query) ? '--json-query ' . escapeshellarg($query) : '';
 
         return $this;
     }

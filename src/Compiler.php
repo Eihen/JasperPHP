@@ -22,7 +22,7 @@ class Compiler extends JasperBase
      * @return null|string
      * @throws \Exception
      */
-    public function compile(string $input, bool $dontExec)
+    public function compile(string $input, bool $dontExec = false)
     {
         $input = static::validateInput($input, ['jrxml']);
 

@@ -55,13 +55,16 @@ class Processor extends JasperBase
      * Add report parameter
      *
      * @param string $key Parameter name
-     * @param string $value Parameter value
+     * @param mixed $value Parameter value
      *
      * @return $this
      */
-    public function param(string $key, string $value)
+    public function param(string $key, $value)
     {
-        $this->params[$key] = !empty($key) ? "$value" : '';
+        if (!empty($key))
+        {
+            $this->params[$key] = $value;
+        }
 
         return $this;
     }
@@ -69,15 +72,37 @@ class Processor extends JasperBase
     /**
      * Add report parameters
      *
-     * @param array $params Parameters in the [name1=>value1,nam2=>value2,...] form
+     * @param array $params Parameters in the [name1=>value1,name2=>value2,...] form
      *
      * @return $this
      */
     public function params(array $params)
     {
-        $this->params = array_merge($this->params, $params);
+        foreach ($params as $key => $value)
+        {
+            $this->param($key, $value);
+        }
 
         return $this;
+    }
+
+    /**
+     * Implode the array of parameters into the JasperStarter equivalent command
+     *
+     * @return string
+     */
+    protected function implodeParams()
+    {
+        if (count($this->params) > 0) {
+            $args = ' -P';
+            foreach ($this->params as $key => $value) {
+                $args .= ' ' . escapeshellarg($key) . '=' . (is_string($value) ? escapeshellarg($value) : $value);
+            }
+
+            return $args;
+        }
+
+        return '';
     }
 
     /**
@@ -90,7 +115,7 @@ class Processor extends JasperBase
      */
     public function resource(string $path)
     {
-        $this->args['resource'] = $path !== null ? "-r $path" : '';
+        $this->args['resource'] = $path !== null ? '-r ' . escapeshellarg($path) : '';
 
         return $this;
     }
@@ -105,7 +130,7 @@ class Processor extends JasperBase
      */
     public function outDelimiter(string $delimiter)
     {
-        $this->args['delimiter'] = !empty($delimiter) ? "--out-field-del $delimiter" : '';
+        $this->args['delimiter'] = !empty($delimiter) ? '--out-field-del ' . escapeshellarg($delimiter) : '';
 
         return $this;
     }
@@ -120,7 +145,7 @@ class Processor extends JasperBase
      */
     public function charset(string $charset)
     {
-        $this->args['charset'] = !empty($charset) ? "--out-charset $charset" : '';
+        $this->args['charset'] = !empty($charset) ? '--out-charset ' . escapeshellarg($charset) : '';
 
         return $this;
     }
@@ -187,24 +212,5 @@ class Processor extends JasperBase
     protected static function validateInput(string $input, array $acceptedFormats = self::VALID_INPUTS)
     {
         return parent::validateInput($input, $acceptedFormats);
-    }
-
-    /**
-     * Implode the array of parameters into the JasperStarter equivalent command
-     *
-     * @return string
-     */
-    protected function implodeParams()
-    {
-        if (count($this->params) > 0) {
-            $args = ' -P';
-            foreach ($this->params as $key => $value) {
-                $args .= " $key=\"$value\"";
-            }
-
-            return $args;
-        }
-
-        return '';
     }
 }

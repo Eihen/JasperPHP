@@ -18,7 +18,7 @@ class XmlProcessor extends FileProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t xml';
+        $this->args['type'] = '-t "xml"';
     }
 
     /**
@@ -30,7 +30,7 @@ class XmlProcessor extends FileProcessor
      */
     public function xpath(string $xpath)
     {
-        $this->args['xpath'] = !empty($xpath) ? "--xml-xpath $xpath" : '';
+        $this->args['xpath'] = !empty($xpath) ? '--xml-xpath ' . escapeshellarg($xpath) : '';
 
         return $this;
     }

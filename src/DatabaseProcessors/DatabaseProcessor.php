@@ -22,7 +22,7 @@ abstract class DatabaseProcessor extends Processor
      */
     public function host(string $host)
     {
-        $this->args['dbHost'] = !empty($host) ? "-H \"$host\"" : '';
+        $this->args['dbHost'] = !empty($host) ? '-H ' . escapeshellarg($host) : '';
 
         return $this;
     }
@@ -36,7 +36,7 @@ abstract class DatabaseProcessor extends Processor
      */
     public function port(string $port)
     {
-        $this->args['dbPort'] = !empty($port) ? "--db-port \"$port\"" : '';
+        $this->args['dbPort'] = !empty($port) ? '--db-port ' . escapeshellarg($port) : '';
 
         return $this;
     }
@@ -50,7 +50,7 @@ abstract class DatabaseProcessor extends Processor
      */
     public function database(string $name)
     {
-        $this->args['dbName'] = !empty($name) ? "-n \"$name\"" : '';
+        $this->args['dbName'] = !empty($name) ? '-n ' . escapeshellarg($name) : '';
 
         return $this;
     }
@@ -64,7 +64,7 @@ abstract class DatabaseProcessor extends Processor
      */
     public function user(string $user)
     {
-        $this->args['dbUser'] = !empty($user) ? "-u \"$user\"" : '';
+        $this->args['dbUser'] = !empty($user) ? '-u ' . escapeshellarg($user) : '';
 
         return $this;
     }
@@ -78,7 +78,7 @@ abstract class DatabaseProcessor extends Processor
      */
     public function password(string $password)
     {
-        $this->args['dbPassword'] = !empty($password) ? "-p \"$password\"" : '';
+        $this->args['dbPassword'] = !empty($password) ? '-p ' . escapeshellarg($password) : '';
 
         return $this;
     }

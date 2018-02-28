@@ -18,7 +18,7 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function __construct()
     {
-        $this->args['type'] = '-t generic';
+        $this->args['type'] = '-t "generic"';
     }
 
     /**
@@ -30,7 +30,7 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function class(string $driver)
     {
-        $this->args['jdbcDriver'] = !empty($driver) ? "--db-driver \"$driver\"" : '';
+        $this->args['jdbcDriver'] = !empty($driver) ? '--db-driver ' . escapeshellarg($driver) : '';
 
         return $this;
     }
@@ -44,7 +44,7 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function url(string $url)
     {
-        $this->args['jdbcUrl'] = !empty($url) ? "--db-url \"$url\"" : '';
+        $this->args['jdbcUrl'] = !empty($url) ? '--db-url ' . escapeshellarg($url) : '';
 
         return $this;
     }
@@ -59,7 +59,7 @@ class JdbcProcessor extends DatabaseProcessor
      */
     public function dir(string $dir)
     {
-        $this->args['jdbcDir'] = !empty($dir) ? "--jdbc-dir \"$dir\"" : '';
+        $this->args['jdbcDir'] = !empty($dir) ? '--jdbc-dir ' . escapeshellarg($dir) : '';
 
         return $this;
     }
