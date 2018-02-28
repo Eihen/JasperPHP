@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Eihen\JasperPHP;
 
 /**
- * File Processor
+ * File Processor.
  *
  * Base for specific file types processors
- *
- * @package Eihen\JasperPHP
  */
 abstract class FileProcessor extends Processor
 {
     /**
-     * Set the Data Source input file
+     * Set the Data Source input file.
      *
      * @param string $file File path
      *
@@ -22,7 +20,7 @@ abstract class FileProcessor extends Processor
      */
     public function file(string $file)
     {
-        $this->args['file'] = !empty($file) ? '--data-file ' . escapeshellarg($file) : '';
+        $this->args['file'] = !empty($file) ? '--data-file '.escapeshellarg($file) : '';
 
         return $this;
     }

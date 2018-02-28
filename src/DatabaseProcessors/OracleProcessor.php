@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Eihen\JasperPHP;
 
 /**
- * Oracle Processor
+ * Oracle Processor.
  *
  * Process reports with Oracle database as Data Source
- *
- * @package Eihen\JasperPHP
  */
 class OracleProcessor extends DatabaseProcessor
 {
@@ -22,7 +20,7 @@ class OracleProcessor extends DatabaseProcessor
     }
 
     /**
-     * Set the Oracle Database SID
+     * Set the Oracle Database SID.
      *
      * @param string $sid Database SID
      *
@@ -30,7 +28,7 @@ class OracleProcessor extends DatabaseProcessor
      */
     public function sid(string $sid)
     {
-        $this->args['oracleSid'] = !empty($sid) ? '--db-sid ' . escapeshellarg($sid) : '';
+        $this->args['oracleSid'] = !empty($sid) ? '--db-sid '.escapeshellarg($sid) : '';
 
         return $this;
     }

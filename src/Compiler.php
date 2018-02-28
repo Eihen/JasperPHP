@@ -5,22 +5,21 @@ declare(strict_types=1);
 namespace Eihen\JasperPHP;
 
 /**
- * Compiler
+ * Compiler.
  *
  * Compile .jrxml files into .jasper files
- *
- * @package Eihen\JasperPHP
  */
 class Compiler extends JasperBase
 {
     /**
-     * Compile .jrxml files into .jasper files
+     * Compile .jrxml files into .jasper files.
      *
-     * @param string $input Input file or directory containing the files
-     * @param bool $dontExec Don't execute the command, just return the command string
+     * @param string $input    Input file or directory containing the files
+     * @param bool   $dontExec Don't execute the command, just return the command string
+     *
+     * @throws \Exception
      *
      * @return null|string
-     * @throws \Exception
      */
     public function compile(string $input, bool $dontExec = false)
     {
@@ -29,7 +28,7 @@ class Compiler extends JasperBase
         $returnCode = 0;
         $commandOutput = [];
 
-        $command = constant('JASPERSTARTER_BIN') . " $this->locale compile $input $this->output 2>&1";
+        $command = constant('JASPERSTARTER_BIN')." $this->locale compile $input $this->output 2>&1";
 
         if ($dontExec) {
             return $command;
@@ -44,7 +43,5 @@ class Compiler extends JasperBase
         if ($returnCode !== 0) {
             throw new \Exception(implode("\n", $commandOutput));
         }
-
-        return null;
     }
 }

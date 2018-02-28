@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Eihen\JasperPHP;
 
 /**
- * XML Processor
+ * XML Processor.
  *
  * Process reports with XML file as Data Source
- *
- * @package Eihen\JasperPHP
  */
 class XmlProcessor extends FileProcessor
 {
@@ -22,7 +20,7 @@ class XmlProcessor extends FileProcessor
     }
 
     /**
-     * Set the Data Source XPath
+     * Set the Data Source XPath.
      *
      * @param string $xpath
      *
@@ -30,7 +28,7 @@ class XmlProcessor extends FileProcessor
      */
     public function xpath(string $xpath)
     {
-        $this->args['xpath'] = !empty($xpath) ? '--xml-xpath ' . escapeshellarg($xpath) : '';
+        $this->args['xpath'] = !empty($xpath) ? '--xml-xpath '.escapeshellarg($xpath) : '';
 
         return $this;
     }
