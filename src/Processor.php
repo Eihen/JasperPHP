@@ -133,10 +133,12 @@ class Processor extends JasperBase
      *
      * @param string $input Input file
      * @param array $formats Output formats int the [format1, format2,...] form
+     * @param bool $dontExec Don't execute the command, just return the command string
      *
+     * @return null|string
      * @throws \Exception
      */
-    public function process(string $input, array $formats)
+    public function process(string $input, array $formats, bool $dontExec = false)
     {
         $input = static::validateInput($input);
 
@@ -147,15 +149,22 @@ class Processor extends JasperBase
                 implode(', ', $unsupported) . ' are not supported.');
         }
 
-        $args = '-f ' . implode(' ', $formats);
+        $args = '-f ' . escapeshellarg(implode(' ', $formats));
         $args .= $this->implodeParams();
         $args .= ' ' . implode(' ', $this->args);
 
         $returnCode = 0;
         $commandOutput = [];
 
+        $command = constant('JASPERSTARTER_BIN') . " $this->locale process $input $this->output $args 2>&1";
+
+        if ($dontExec)
+        {
+            return $command;
+        }
+
         exec(
-            constant('JASPERSTARTER_BIN') . " $this->locale process \"$input\"  $this->output $args 2>&1",
+            $command,
             $commandOutput,
             $returnCode
         );
@@ -163,6 +172,8 @@ class Processor extends JasperBase
         if ($returnCode !== 0) {
             throw new \Exception(implode("\n", $commandOutput));
         }
+
+        return null;
     }
 
     /**
