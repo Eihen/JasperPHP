@@ -3,16 +3,14 @@
 namespace Eihen\JasperPHP;
 
 /**
- * Database Processor
+ * Database Processor.
  *
  * Base for specific databases processors
- *
- * @package Eihen\JasperPHP
  */
 abstract class DatabaseProcessor extends Processor
 {
     /**
-     * Set the Database Host
+     * Set the Database Host.
      *
      * @param string $host Host name
      *
@@ -20,13 +18,13 @@ abstract class DatabaseProcessor extends Processor
      */
     public function host($host)
     {
-        $this->args['dbHost'] = !empty($host) ? '-H ' . escapeshellarg($host) : '';
+        $this->args['dbHost'] = !empty($host) ? '-H '.escapeshellarg($host) : '';
 
         return $this;
     }
 
     /**
-     * Set the Database Host Port
+     * Set the Database Host Port.
      *
      * @param string $port Host port
      *
@@ -34,13 +32,13 @@ abstract class DatabaseProcessor extends Processor
      */
     public function port($port)
     {
-        $this->args['dbPort'] = !empty($port) ? '--db-port ' . escapeshellarg($port) : '';
+        $this->args['dbPort'] = !empty($port) ? '--db-port '.escapeshellarg($port) : '';
 
         return $this;
     }
 
     /**
-     * Set the Database Name
+     * Set the Database Name.
      *
      * @param string $name Database name
      *
@@ -48,13 +46,13 @@ abstract class DatabaseProcessor extends Processor
      */
     public function database($name)
     {
-        $this->args['dbName'] = !empty($name) ? '-n ' . escapeshellarg($name) : '';
+        $this->args['dbName'] = !empty($name) ? '-n '.escapeshellarg($name) : '';
 
         return $this;
     }
 
     /**
-     * Set the Database User
+     * Set the Database User.
      *
      * @param string $user Database user
      *
@@ -62,13 +60,13 @@ abstract class DatabaseProcessor extends Processor
      */
     public function user($user)
     {
-        $this->args['dbUser'] = !empty($user) ? '-u ' . escapeshellarg($user) : '';
+        $this->args['dbUser'] = !empty($user) ? '-u '.escapeshellarg($user) : '';
 
         return $this;
     }
 
     /**
-     * Set the Database Password
+     * Set the Database Password.
      *
      * @param string $password Database password
      *
@@ -76,14 +74,14 @@ abstract class DatabaseProcessor extends Processor
      */
     public function password($password)
     {
-        $this->args['dbPassword'] = !empty($password) ? '-p ' . escapeshellarg($password) : '';
+        $this->args['dbPassword'] = !empty($password) ? '-p '.escapeshellarg($password) : '';
 
         return $this;
     }
 
     /**
      * Set the arguments for the database connection
-     * Accepted keys are: host, port, database (or name), user (or username), password
+     * Accepted keys are: host, port, database (or name), user (or username), password.
      *
      * @param array $dbArgs Database configuration parameters
      *
@@ -118,6 +116,7 @@ abstract class DatabaseProcessor extends Processor
         if (isset($dbArgs['password'])) {
             $this->password($dbArgs['password']);
         }
+
         return $this;
     }
 }

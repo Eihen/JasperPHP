@@ -6,7 +6,7 @@ use Eihen\JasperPHP\Compiler;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class CompilerTest
+ * Class CompilerTest.
  *
  * @covers \Eihen\JasperPHP\Compiler
  */
@@ -19,21 +19,22 @@ class CompilerTest extends TestCase
     {
         $compiler = new Compiler();
         $this->assertInstanceOf(Compiler::class, $compiler);
+
         return $compiler;
     }
 
     /**
-     * Data provider for valid compile tests that should succeed
+     * Data provider for valid compile tests that should succeed.
      *
      * @return array
      */
     public function compileProvider()
     {
         return [
-            'No File Name' => [__DIR__ . '/jrxml/Simple.jrxml', __DIR__ . '/generated/'],
-            'No Extension' => [__DIR__ . '/jrxml/Simple.jrxml', __DIR__ . '/generated/SimpleNoExt'],
-            'Jasper Extension' => [__DIR__ . '/jrxml/Simple.jrxml', __DIR__ . '/generated/SimpleJasperExt.jasper'],
-            'Empty Output' => [__DIR__ . '/jrxml/Simple.jrxml', ''],
+            'No File Name'     => [__DIR__.'/jrxml/Simple.jrxml', __DIR__.'/generated/'],
+            'No Extension'     => [__DIR__.'/jrxml/Simple.jrxml', __DIR__.'/generated/SimpleNoExt'],
+            'Jasper Extension' => [__DIR__.'/jrxml/Simple.jrxml', __DIR__.'/generated/SimpleJasperExt.jasper'],
+            'Empty Output'     => [__DIR__.'/jrxml/Simple.jrxml', ''],
         ];
     }
 
@@ -41,8 +42,8 @@ class CompilerTest extends TestCase
      * @dataProvider compileProvider
      * @depends      testConstruct
      *
-     * @param string $input
-     * @param string $output
+     * @param string   $input
+     * @param string   $output
      * @param Compiler $compiler
      */
     public function testCompile($input, $output, Compiler $compiler)
@@ -52,9 +53,9 @@ class CompilerTest extends TestCase
         $inputInfo = pathinfo($input);
 
         if (empty($output)) {
-            $output = $inputInfo['dirname'] . '/' . $inputInfo['filename'] . '.jasper';
+            $output = $inputInfo['dirname'].'/'.$inputInfo['filename'].'.jasper';
         } elseif (is_dir($output)) {
-            $output .= '/' . $inputInfo['filename'] . '.jasper';
+            $output .= '/'.$inputInfo['filename'].'.jasper';
         } elseif (pathinfo($output, PATHINFO_EXTENSION) !== 'jasper') {
             $output .= '.jasper';
         }
@@ -87,7 +88,7 @@ class CompilerTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Input is not a file.');
-        $compiler->compile(__DIR__ . 'notexistentfile.input');
+        $compiler->compile(__DIR__.'notexistentfile.input');
     }
 
     /**

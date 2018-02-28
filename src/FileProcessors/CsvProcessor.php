@@ -3,11 +3,9 @@
 namespace Eihen\JasperPHP;
 
 /**
- * CSV Processor
+ * CSV Processor.
  *
  * Process reports with CSV file as Data Source
- *
- * @package Eihen\JasperPHP
  */
 class CsvProcessor extends FileProcessor
 {
@@ -25,18 +23,19 @@ class CsvProcessor extends FileProcessor
     }
 
     /**
-     * The CSV first row contains column headers
+     * The CSV first row contains column headers.
      *
      * @return $this
      */
     public function csvFirstRow()
     {
         $this->args['csvFirstRow'] = '--csv-first-row';
+
         return $this;
     }
 
     /**
-     * Add a column
+     * Add a column.
      *
      * @param string $column
      *
@@ -52,7 +51,7 @@ class CsvProcessor extends FileProcessor
     }
 
     /**
-     * Add a list of columns
+     * Add a list of columns.
      *
      * @param array $columns
      *
@@ -61,12 +60,13 @@ class CsvProcessor extends FileProcessor
     public function columns($columns)
     {
         $this->columns = array_merge($this->columns, $columns);
+
         return $this;
     }
 
     /**
      * Set the field delimiter
-     * Defaults to ","
+     * Defaults to ",".
      *
      * @param string $delimiter Delimiter
      *
@@ -74,14 +74,14 @@ class CsvProcessor extends FileProcessor
      */
     public function fieldDelimiter($delimiter)
     {
-        $this->args['csvFieldDelimiter'] = !empty($delimiter) ? '--csv-field-del ' . escapeshellarg($delimiter) : '';
+        $this->args['csvFieldDelimiter'] = !empty($delimiter) ? '--csv-field-del '.escapeshellarg($delimiter) : '';
 
         return $this;
     }
 
     /**
      * Set the record delimiter
-     * Defaults to line separator
+     * Defaults to line separator.
      *
      * @param string $delimiter Delimiter
      *
@@ -89,14 +89,14 @@ class CsvProcessor extends FileProcessor
      */
     public function recordDelimiter($delimiter)
     {
-        $this->args['csvRecordDelimiter'] = !empty($delimiter) ? '--csv-record-del ' . escapeshellarg($delimiter) : '';
+        $this->args['csvRecordDelimiter'] = !empty($delimiter) ? '--csv-record-del '.escapeshellarg($delimiter) : '';
 
         return $this;
     }
 
     /**
      * Set the charset
-     * Defaults to "utf-8"
+     * Defaults to "utf-8".
      *
      * @param string $charset Charset code
      *
@@ -104,7 +104,7 @@ class CsvProcessor extends FileProcessor
      */
     public function charset($charset)
     {
-        $this->args['csvCharset'] = !empty($charset) ? '--csv-charset ' . escapeshellarg($charset) : '';
+        $this->args['csvCharset'] = !empty($charset) ? '--csv-charset '.escapeshellarg($charset) : '';
 
         return $this;
     }
@@ -113,10 +113,10 @@ class CsvProcessor extends FileProcessor
      * Process the input file and outputs reports in the specified formats
      * Supported input file formats: jrxml, jasper, jrprint
      * Supported output formats: view, print, pdf, rtf, xls, xlsMeta, xlsx,
-     *  docs, odt, ods, pptx, csv, csvMeta, html, xhtml, xml, jrprint
+     *  docs, odt, ods, pptx, csv, csvMeta, html, xhtml, xml, jrprint.
      *
-     * @param string $input Input file
-     * @param array $formats Output formats int the [format1, format2,...] form
+     * @param string $input   Input file
+     * @param array  $formats Output formats int the [format1, format2,...] form
      *
      * @throws \Exception
      */
@@ -124,7 +124,7 @@ class CsvProcessor extends FileProcessor
     {
         if (count($this->columns) > 0) {
             $this->args['csvColumns'] = '--csv-columns '
-                . escapeshellarg(implode(' ', $this->columns));
+                .escapeshellarg(implode(' ', $this->columns));
         }
 
         parent::process($input, $formats);

@@ -3,13 +3,11 @@
 namespace Eihen\JasperPHP;
 
 /**
- * Base Processor
+ * Base Processor.
  *
  * Process reports without Data Source
  *
  * Base for other processors
- *
- * @package Eihen\JasperPHP
  */
 class Processor extends JasperBase
 {
@@ -30,7 +28,7 @@ class Processor extends JasperBase
         'html',
         'xhtml',
         'xml',
-        'jrprint'
+        'jrprint',
     ];
     const VALID_INPUTS = ['jrxml', 'jasper', 'jrprint'];
 
@@ -39,21 +37,22 @@ class Processor extends JasperBase
 
     /**
      * Compile the input .jrxml file to .jasper before processing the report
-     * Saves the .jasper file in the same directory as the input file
+     * Saves the .jasper file in the same directory as the input file.
      *
      * @return $this
      */
     public function writeJasper()
     {
         $this->args['writeJasper'] = '--write-jasper';
+
         return $this;
     }
 
     /**
-     * Add report parameter
+     * Add report parameter.
      *
-     * @param string $key Parameter name
-     * @param mixed $value Parameter value
+     * @param string $key   Parameter name
+     * @param mixed  $value Parameter value
      *
      * @return $this
      */
@@ -67,7 +66,7 @@ class Processor extends JasperBase
     }
 
     /**
-     * Add report parameters
+     * Add report parameters.
      *
      * @param array $params Parameters in the [name1=>value1,name2=>value2,...] form
      *
@@ -83,7 +82,7 @@ class Processor extends JasperBase
     }
 
     /**
-     * Implode the array of parameters into the JasperStarter equivalent command
+     * Implode the array of parameters into the JasperStarter equivalent command.
      *
      * @return string
      */
@@ -92,7 +91,7 @@ class Processor extends JasperBase
         if (count($this->params) > 0) {
             $args = ' -P';
             foreach ($this->params as $key => $value) {
-                $args .= ' ' . escapeshellarg($key) . '=';
+                $args .= ' '.escapeshellarg($key).'=';
                 if (is_null($value)) {
                     $args .= 'null';
                 } else {
@@ -112,7 +111,7 @@ class Processor extends JasperBase
 
     /**
      * Set the path to the resource directory or jar file
-     * If not given the input directory is used
+     * If not given the input directory is used.
      *
      * @param string $path Resource path
      *
@@ -120,14 +119,14 @@ class Processor extends JasperBase
      */
     public function resource($path)
     {
-        $this->args['resource'] = $path !== null ? '-r ' . escapeshellarg($path) : '';
+        $this->args['resource'] = $path !== null ? '-r '.escapeshellarg($path) : '';
 
         return $this;
     }
 
     /**
      * Set the CSV output file delimiter
-     * Defaults to ","
+     * Defaults to ",".
      *
      * @param string $delimiter
      *
@@ -135,14 +134,14 @@ class Processor extends JasperBase
      */
     public function outDelimiter($delimiter)
     {
-        $this->args['delimiter'] = !empty($delimiter) ? '--out-field-del ' . escapeshellarg($delimiter) : '';
+        $this->args['delimiter'] = !empty($delimiter) ? '--out-field-del '.escapeshellarg($delimiter) : '';
 
         return $this;
     }
 
     /**
      * Set the CSV output file charset
-     * Defaults to "utf-8"
+     * Defaults to "utf-8".
      *
      * @param string $charset
      *
@@ -150,7 +149,7 @@ class Processor extends JasperBase
      */
     public function charset($charset)
     {
-        $this->args['charset'] = !empty($charset) ? '--out-charset ' . escapeshellarg($charset) : '';
+        $this->args['charset'] = !empty($charset) ? '--out-charset '.escapeshellarg($charset) : '';
 
         return $this;
     }
@@ -159,14 +158,15 @@ class Processor extends JasperBase
      * Process the input file and outputs reports in the specified formats
      * Supported input file formats: jrxml, jasper, jrprint
      * Supported output formats: view, print, pdf, rtf, xls, xlsMeta, xlsx,
-     *  docs, odt, ods, pptx, csv, csvMeta, html, xhtml, xml, jrprint
+     *  docs, odt, ods, pptx, csv, csvMeta, html, xhtml, xml, jrprint.
      *
-     * @param string $input Input file
-     * @param array $formats Output formats int the [format1, format2,...] form
-     * @param bool $dontExec Don't execute the command, just return the command string
+     * @param string $input    Input file
+     * @param array  $formats  Output formats int the [format1, format2,...] form
+     * @param bool   $dontExec Don't execute the command, just return the command string
+     *
+     * @throws \Exception
      *
      * @return null|string
-     * @throws \Exception
      */
     public function process($input, $formats, $dontExec = false)
     {
@@ -175,18 +175,18 @@ class Processor extends JasperBase
         $formats = array_unique($formats);
         $unsupported = array_diff($formats, static::VALID_OUTPUTS);
         if (count($unsupported) > 0) {
-            throw new \InvalidArgumentException('The output formats ' .
-                implode(', ', $unsupported) . ' are not supported.');
+            throw new \InvalidArgumentException('The output formats '.
+                implode(', ', $unsupported).' are not supported.');
         }
 
-        $args = '-f ' . escapeshellarg(implode(' ', $formats));
+        $args = '-f '.escapeshellarg(implode(' ', $formats));
         $args .= $this->implodeParams();
-        $args .= ' ' . implode(' ', $this->args);
+        $args .= ' '.implode(' ', $this->args);
 
         $returnCode = 0;
         $commandOutput = [];
 
-        $command = constant('JASPERSTARTER_BIN') . " $this->locale process $input $this->output $args 2>&1";
+        $command = constant('JASPERSTARTER_BIN')." $this->locale process $input $this->output $args 2>&1";
 
         if ($dontExec) {
             return $command;
@@ -201,15 +201,13 @@ class Processor extends JasperBase
         if ($returnCode !== 0) {
             throw new \Exception(implode("\n", $commandOutput));
         }
-
-        return null;
     }
 
     /**
-     * Validates input file format with the accept formats
+     * Validates input file format with the accept formats.
      *
-     * @param string $input Path to the input file
-     * @param array $acceptedFormats Accepted formats (defaults to self::VALID_INPUTS)
+     * @param string $input           Path to the input file
+     * @param array  $acceptedFormats Accepted formats (defaults to self::VALID_INPUTS)
      *
      * @return string
      */
